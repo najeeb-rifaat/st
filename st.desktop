@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=ST
+Comment=Simple Terminal
+Exec=st
+Icon=ST
+Type=XSession
