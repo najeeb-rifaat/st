@@ -1,4 +1,5 @@
 src/
 pkg/
-dwm-**.tar.*
+st-**.diff
+st-**.tar.*
 
