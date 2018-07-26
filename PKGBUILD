@@ -15,22 +15,24 @@ conflicts=("${pkgname}")
 _patches=(
   "https://st.suckless.org/patches/xresources/st-xresources-20180309-c5ba9c0.diff"
   "https://st.suckless.org/patches/scrollback/st-scrollback-0.8.diff"
+  "https://st.suckless.org/patches/alpha/st-alpha-20180616-0.8.1.diff"
 )
 
 source=(
   "http://dl.suckless.org/st/$basepkgname-$pkgver.tar.gz"
   "${_patches[@]}"
+  "config.h"
 )
 
-#md5sums=('92135aecdba29300bb2e274a55f5b71e'
-#         '6c1d71ee8f8abfc3976536a17a376d20')
+md5sums=('SKIP')
 
 prepare() {
   cd $srcdir/$basepkgname-$pkgver
   sed -i '/tic /d' Makefile
+  patch -Np1 -i "$srcdir/st-alpha-20180616-0.8.1.diff"
   patch -Np1 -i "$srcdir/st-xresources-20180309-c5ba9c0.diff"
   patch -Np1 -i "$srcdir/st-scrollback-0.8.diff"
-  cp $srcdir/../config.h ./config.h
+  #cp $srcdir/config.h ./config.h
 }
 
 build() {
