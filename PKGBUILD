@@ -32,7 +32,7 @@ prepare() {
   patch -Np1 -i "$srcdir/st-alpha-20180616-0.8.1.diff"
   patch -Np1 -i "$srcdir/st-xresources-20180309-c5ba9c0.diff"
   patch -Np1 -i "$srcdir/st-scrollback-0.8.diff"
-  #cp $srcdir/config.h ./config.h
+  cp $srcdir/config.h ./config.h
 }
 
 build() {
