@@ -1,12 +1,15 @@
 /* See LICENSE file for copyright and license details. */
 
+/* bg opacity */
+float alpha = 0.8;
+
 /*
  * appearance
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static int borderpx = 1;
+static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -42,14 +45,14 @@ static unsigned int tripleclicktimeout = 600;
 int allowaltscreen = 1;
 
 /* frames per second st should at maximum draw to the screen */
-static unsigned int xfps = 60;
-static unsigned int actionfps = 30;
+static unsigned int xfps = 30;
+static unsigned int actionfps = 24;
 
 /*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
  * attribute.
  */
-static unsigned int blinktimeout = 200;
+static unsigned int blinktimeout = 100;
 
 /*
  * thickness of underline and bar cursors
@@ -83,45 +86,45 @@ char *termname = "st-256color";
 unsigned int tabspaces = 2;
 
 /* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
-
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-  "#ffffff",
-  "#999999"
-};
+//static const char *colorname[] = {
+// /* 8 normal colors */
+// "black",
+// "red3",
+// "green3",
+// "yellow3",
+// "blue2",
+// "magenta3",
+// "cyan3",
+// "gray90",
+// 
+// /* 8 bright colors */
+// "gray50",
+// "red",
+// "green",
+// "yellow",
+// "#5c5cff",
+// "magenta",
+// "cyan",
+// "white",
+// 
+// [255] = 0,
+// 
+// /* more colors can be added after 255 to use with DefaultXX */
+// "#cccccc",
+// "#555555",
+// "#ffffff",
+// "#999999"
+//};
 
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 257;
-unsigned int defaultbg = 256;
-static unsigned int defaultcs = 259;
-static unsigned int defaultrcs = 258;
+//unsigned int defaultfg = 257;
+//unsigned int defaultbg = 256;
+//static unsigned int defaultcs = 259;
+//static unsigned int defaultrcs = 258;
 
 /*
  * Default shape of cursor
@@ -145,6 +148,8 @@ static unsigned int rows = 24;
 static unsigned int mouseshape = XC_xterm;
 static unsigned int mousefg = 7;
 static unsigned int mousebg = 0;
+
+#include "/home/najee89b/.cache/wal/colors-wal-st.h"
 
 /*
  * Color used to display font attributes when fontconfig selected a font which
@@ -175,7 +180,7 @@ ResourcePref resources[] = {
 		{ "color15",      STRING,  &colorname[15] },
 		{ "background",   STRING,  &colorname[256] },
 		{ "foreground",   STRING,  &colorname[257] },
-		{ "cursorColor",  STRING,  &colorname[258] },
+		{ "cursorColor",  STRING,  &colorname[255] },
 		{ "termname",     STRING,  &termname },
 		{ "shell",        STRING,  &shell },
 		{ "xfps",         INTEGER, &xfps },
@@ -214,11 +219,15 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
+const int boxdraw = 0;
+const int boxdraw_bold = 0;
+
+/* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
+const int boxdraw_braille = 0;
 /*
  * Special keys (change & recompile st.info accordingly)
  *
