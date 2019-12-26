@@ -149,7 +149,7 @@ static unsigned int mouseshape = XC_xterm;
 static unsigned int mousefg = 7;
 static unsigned int mousebg = 0;
 
-#include "/home/najee89b/.cache/wal/colors-wal-st.h"
+#include "/home/najee89b/colors-wal-st.h"
 
 /*
  * Color used to display font attributes when fontconfig selected a font which

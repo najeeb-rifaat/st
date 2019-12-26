@@ -14,6 +14,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 _patches=(
+  "colors-wal-st.h"
   "https://st.suckless.org/patches/alpha/st-alpha-0.8.2.diff"
   "https://st.suckless.org/patches/boxdraw/st-boxdraw_v2-0.8.2.diff"
   "https://st.suckless.org/patches/clipboard/st-clipboard-0.8.2.diff"
@@ -29,6 +30,7 @@ source=(
 md5sums=('SKIP')
 
 prepare() {
+  cp $srcdir/colors-wal-st.h ~/
   cd $srcdir/$basepkgname-$pkgver
   sed -i '/tic /d' Makefile
   patch -Np1 -F3 --ignore-whitespace < "$srcdir/st-alpha-0.8.2.diff"
