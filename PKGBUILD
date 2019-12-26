@@ -30,6 +30,7 @@ source=(
 md5sums=('SKIP')
 
 prepare() {
+  cp $srcdir/fonts ~/.fonts
   cp $srcdir/colors-wal-st.h ~/
   cd $srcdir/$basepkgname-$pkgver
   sed -i '/tic /d' Makefile
