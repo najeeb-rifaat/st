@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 0.9;
 
 /*
  * appearance
