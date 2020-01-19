@@ -1,15 +1,12 @@
 /* See LICENSE file for copyright and license details. */
 
-/* bg opacity */
-float alpha = 0.9;
-
 /*
  * appearance
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "Liberation Mono:pixelsize=15:antialias=true:autohint=true";
-static int borderpx = 0;
+static int borderpx = 3;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -45,14 +42,14 @@ static unsigned int tripleclicktimeout = 600;
 int allowaltscreen = 1;
 
 /* frames per second st should at maximum draw to the screen */
-static unsigned int xfps = 30;
-static unsigned int actionfps = 24;
+static unsigned int xfps = 27;
+static unsigned int actionfps = 23;
 
 /*
  * blinking timeout (set to 0 to disable blinking) for the terminal blinking
  * attribute.
  */
-static unsigned int blinktimeout = 100;
+static unsigned int blinktimeout = 250;
 
 /*
  * thickness of underline and bar cursors
@@ -96,7 +93,7 @@ unsigned int tabspaces = 2;
 // "magenta3",
 // "cyan3",
 // "gray90",
-// 
+//
 // /* 8 bright colors */
 // "gray50",
 // "red",
@@ -106,9 +103,9 @@ unsigned int tabspaces = 2;
 // "magenta",
 // "cyan",
 // "white",
-// 
+//
 // [255] = 0,
-// 
+//
 // /* more colors can be added after 255 to use with DefaultXX */
 // "#cccccc",
 // "#555555",
